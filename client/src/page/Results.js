@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "../utils/axios";
+import axios from "axios";
 
 const Results = () => {
   const { pollId } = useParams();
@@ -8,7 +8,7 @@ const Results = () => {
 
   const getResults = useCallback(async () => {
     try {
-      const res = await axios.get(`/polls/${pollId}/result`);
+      const res = await axios.get(`/api/polls/${pollId}/result`);
 
       console.log(res.data);
       setResults(res.data);

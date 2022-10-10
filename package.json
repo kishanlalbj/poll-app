@@ -3,20 +3,24 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start:prod": "node ./bin/www",
-    "start:dev": "nodemon ./bin/www"
+    "start": "cross-env NODE_ENV=production node ./bin/www",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./bin/www",
+    "start:local": "cross-env NODE_ENV=local node ./bin/www",
+    "start:local:dev": "cross-env NODE_ENV=local nodemon ./bin/www",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "^2.0.0",
     "mongoose": "^6.6.5",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.20"
   },
   "devDependencies": {
-    "dotenv": "^16.0.3",
-    "nodemon": "^2.0.20"
+    "dotenv": "^16.0.3"
   }
 }

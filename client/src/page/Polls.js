@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../utils/axios";
+import axios from "axios";
 
 const Polls = () => {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const Polls = () => {
   const getPolls = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("/polls");
+      const res = await axios.get("/api/polls");
       setPolls(res.data);
     } catch (error) {
       setError(error.response.data.message);
@@ -27,8 +27,8 @@ const Polls = () => {
   }, []);
 
   useEffect(() => {
-    let polls = localStorage.getItem("polls");
-    if (polls) setLocked(JSON.parse(polls));
+    let localPolls = localStorage.getItem("polls");
+    if (localPolls) setLocked(JSON.parse(localPolls));
   }, []);
 
   const handlePollClick = (id) => {

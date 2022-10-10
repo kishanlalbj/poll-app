@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Question from "../components/Question";
-import axios from "../utils/axios";
+import axios from "axios";
 
 const Questions = () => {
   const { pollId } = useParams();
@@ -30,7 +30,7 @@ const Questions = () => {
   const getQuestions = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`/polls/questions/${pollId}`);
+      const res = await axios.get(`/api/polls/questions/${pollId}`);
       setQuestions(res.data);
     } catch (error) {
       setError(error.response.data.error.message);
