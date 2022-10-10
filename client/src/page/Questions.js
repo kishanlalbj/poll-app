@@ -84,7 +84,7 @@ const Questions = () => {
 
   const handleSubmit = async () => {
     setSubmitted(true);
-    await axios.post(`/polls/${pollId}/submit`, {
+    await axios.post(`/api/polls/${pollId}/submit`, {
       answers: questions
     });
 
